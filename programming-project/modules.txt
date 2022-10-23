@@ -1,0 +1,24 @@
+--pgmImage.c Constructor module--
+This module will create an object from a given pgm file that stores information about an input file such as the height, width and raw data, ect. This will improve readabilty and modularity by defining all the relevant variables in a single object. The module will then return the image object based upon this provided file.
+
+--pgmValid.c module--
+This module will coalesce the required sanity checks into an independent module to check if a given PGM image is valid. The module will take in one parameter - a filename. It will then scan in the file into a pgmImage structure and determine from this data if the file is valid. It will return zero on success. On failure a relevant error code will be returned denoting the type of failure that occurred.
+
+--pgmComp.c module--
+This module will scan in two PGM files through the command line. It will then validate the files and store them as image objects using pgmVlid and pgmImage. Comparisons will then be done on these two object to determine if they are logically equivalent. It will return a designated error code if unsuccessful, and a zero if successful.
+
+--pgmB2A.c module--
+This module will convert a Binary pgm file to its corresponding ASCII variant. It will take in two parameters - the name of an input file and the name of the output file it shall produce. It will return an error code which follows the specification. It will use pgmImage to produce an image to achieve this. pgmValid will always have been called prior to calling this module so no validation will occur internally.
+
+--pgmb2a.c module--
+This is the main component of pgmB2A.c and exists so that pgmB2A.c can be called from other modules which have their own main functions whilst avoiding linking issues. All this module does is take the name of an existing file and the name of the file to be converted. It uses pgmImage and pgmValid for validation and object creation, and then passes relevant info to pgmB2A for conversion.
+
+--pgmA2B.c module--
+This module will convert a ASCII pgm file to its corresponding Binary variant. It will take in two parameters - the name of an input file and the name of the output file it shall produce. It will return an error code which follows the specification. It will use pgmImage to produce an image to achieve this. pgmValid will always have been called prior to calling this module so no validation will occur internally.
+
+--pgma2b.c module--
+This is the main component of pgmA2B.c and exists so that pgmA2B.c can be called from other modules which have their own main functions whilst avoiding linking issues. All this module does is take the name of an existing file and the name of the file to be converted. It uses pgmImage and pgmValid for validation and object creation, and then passes relevant info to pgmA2B for conversion.
+
+--pgmReduce.c module--
+This module takes in the name of an input file, as well as the name of the desired output file, as well as a number called the reduction_factor. The input file will then be reduced using this factor in each of the given dimensions, effectively shrinking the image. It will return a designated error code if unsuccessful, and a zero if successful 
+

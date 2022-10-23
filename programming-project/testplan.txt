@@ -1,0 +1,3 @@
+--Test plan-- 
+The test plan runs through a shell script of some basic test conditions to test a given error condition. It starts off by attempting running all the utilities with no CLI arguments to test the special usage messages. It then runs each program with each of the given faulty pgm files, which should then elicit an  error message which corresponds to the file name of the faulty file it has been passed. It will also test a success condition for each file, which should demonstrate the success case of each utility. PgmTile and PgmAssemble will not be included in the test script as they have not been fully implemented yet.
+
